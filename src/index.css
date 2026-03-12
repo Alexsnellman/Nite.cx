@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 267 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 54%;
+
+    --accent: 267 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 346 100% 59%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 140 100% 50%;
+    --success-foreground: 0 0% 0%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 12%;
+    --ring: 267 100% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 267 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 267 100% 50%;
+
+    --font-heading: 'Hanken Grotesk', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-heading antialiased;
+    font-family: var(--font-heading);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
+  }
+
+  /* Hide scrollbar for feed */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .font-mono-meta {
+    font-family: var(--font-mono);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+
+  .bg-gradient-overlay {
+    background: linear-gradient(
+      to top,
+      hsl(0 0% 4% / 0.95) 0%,
+      hsl(0 0% 4% / 0.6) 40%,
+      transparent 70%
+    );
+  }
+
+  .btn-pulse {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px 4px hsl(var(--primary) / 0.3);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+}
+
+/* Leaflet popup overrides for dark theme */
+.party-map-popup .leaflet-popup-content-wrapper {
+  background: hsl(0 0% 8% / 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid hsl(0 0% 16%);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px hsl(0 0% 0% / 0.5);
+  color: hsl(0 0% 96%);
+}
+.party-map-popup .leaflet-popup-tip {
+  background: hsl(0 0% 8% / 0.95);
+  border: 1px solid hsl(0 0% 16%);
+}
+.party-map-popup .leaflet-popup-content {
+  margin: 12px 16px;
+  font-size: 13px;
+  line-height: 1.4;
+}
