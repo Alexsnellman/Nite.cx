@@ -17,7 +17,7 @@ function formatDateForFeed(dateStr: string): string {
 
 function mapDbEventToEventData(row: any): EventData {
   const cityName = row.cities?.name || "Helsinki";
-  const fallbackImage = getEventFallbackImage(row.event_type || row.genre || "nightclub", row.title);
+  const fallbackImage = getEventFallbackImage(row.id, row.event_type || row.genre || "nightclub");
 
   return {
     id: row.id,
