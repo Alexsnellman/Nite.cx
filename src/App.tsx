@@ -8,6 +8,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import BottomNav from "@/components/BottomNav";
 import NotificationCenter from "@/components/NotificationCenter";
+import MobileLayout from "@/components/MobileLayout";
 
 // User pages
 import Feed from "./pages/Feed";
@@ -54,25 +55,25 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               {/* Public routes */}
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="/login" element={<MobileLayout><Login /></MobileLayout>} />
+              <Route path="/signup" element={<MobileLayout><Signup /></MobileLayout>} />
+              <Route path="/reset-password" element={<MobileLayout><ResetPassword /></MobileLayout>} />
 
               {/* Protected user routes */}
-              <Route path="/" element={<ProtectedRoute><Feed /></ProtectedRoute>} />
-              <Route path="/event/:id" element={<ProtectedRoute><EventDetail /></ProtectedRoute>} />
-              <Route path="/tickets" element={<ProtectedRoute><Tickets /></ProtectedRoute>} />
-              <Route path="/search" element={<ProtectedRoute><SearchPage /></ProtectedRoute>} />
-              <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
-              <Route path="/chat/:id" element={<ProtectedRoute><ChatConversation /></ProtectedRoute>} />
-              <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-              <Route path="/create-event" element={<ProtectedRoute><CreateEvent /></ProtectedRoute>} />
-              <Route path="/admin-scan" element={<ProtectedRoute><AdminScan /></ProtectedRoute>} />
-              <Route path="/map" element={<ProtectedRoute><PartyMap /></ProtectedRoute>} />
-              <Route path="/radar" element={<ProtectedRoute><NightlifeRadar /></ProtectedRoute>} />
-              <Route path="/organizer" element={<ProtectedRoute><OrganizerDashboard /></ProtectedRoute>} />
-              <Route path="/organizer/event/:id" element={<ProtectedRoute><OrganizerEventDetail /></ProtectedRoute>} />
-              <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+              <Route path="/" element={<MobileLayout><ProtectedRoute><Feed /></ProtectedRoute></MobileLayout>} />
+              <Route path="/event/:id" element={<MobileLayout><ProtectedRoute><EventDetail /></ProtectedRoute></MobileLayout>} />
+              <Route path="/tickets" element={<MobileLayout><ProtectedRoute><Tickets /></ProtectedRoute></MobileLayout>} />
+              <Route path="/search" element={<MobileLayout><ProtectedRoute><SearchPage /></ProtectedRoute></MobileLayout>} />
+              <Route path="/chat" element={<MobileLayout><ProtectedRoute><Chat /></ProtectedRoute></MobileLayout>} />
+              <Route path="/chat/:id" element={<MobileLayout><ProtectedRoute><ChatConversation /></ProtectedRoute></MobileLayout>} />
+              <Route path="/profile" element={<MobileLayout><ProtectedRoute><Profile /></ProtectedRoute></MobileLayout>} />
+              <Route path="/create-event" element={<MobileLayout><ProtectedRoute><CreateEvent /></ProtectedRoute></MobileLayout>} />
+              <Route path="/admin-scan" element={<MobileLayout><ProtectedRoute><AdminScan /></ProtectedRoute></MobileLayout>} />
+              <Route path="/map" element={<MobileLayout><ProtectedRoute><PartyMap /></ProtectedRoute></MobileLayout>} />
+              <Route path="/radar" element={<MobileLayout><ProtectedRoute><NightlifeRadar /></ProtectedRoute></MobileLayout>} />
+              <Route path="/organizer" element={<MobileLayout><ProtectedRoute><OrganizerDashboard /></ProtectedRoute></MobileLayout>} />
+              <Route path="/organizer/event/:id" element={<MobileLayout><ProtectedRoute><OrganizerEventDetail /></ProtectedRoute></MobileLayout>} />
+              <Route path="/settings" element={<MobileLayout><ProtectedRoute><Settings /></ProtectedRoute></MobileLayout>} />
 
               {/* Admin routes */}
               <Route path="/admin" element={<AdminEventsPage />} />

@@ -13,12 +13,12 @@ const BottomNav = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Hide nav on scanner and auth pages
-  if (["/admin-scan", "/login", "/signup", "/reset-password"].includes(location.pathname) || location.pathname.startsWith("/chat/")) return null;
+  // Hide nav on scanner, auth, and admin pages
+  if (["/admin-scan", "/login", "/signup", "/reset-password"].includes(location.pathname) || location.pathname.startsWith("/chat/") || location.pathname.startsWith("/admin")) return null;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-background/90 backdrop-blur-xl safe-area-bottom">
-      <div className="flex items-center justify-around h-16 max-w-lg mx-auto px-2">
+    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-50 border-t border-border bg-background/90 backdrop-blur-xl safe-area-bottom">
+      <div className="flex items-center justify-around h-16 px-2">
         {tabs.map(({ path, icon: Icon, label }) => {
           const isActive = location.pathname === path;
           return (
