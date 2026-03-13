@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import EventFeedCard from "@/components/EventFeedCard";
-import { mockEvents, EventData } from "@/data/mockEvents";
+import { EventData } from "@/data/mockEvents";
 import { sortByPopularity, calculatePopularity } from "@/lib/popularity";
 import { useEvents } from "@/hooks/useEvents";
 import { Loader2, MapPin, GraduationCap, Flame, ChevronUp, ChevronDown, Radio } from "lucide-react";
@@ -17,12 +17,7 @@ const Feed = () => {
   const [tonightOpen, setTonightOpen] = useState(false);
   const [showLive, setShowLive] = useState(false);
 
-  // Merge DB events with Helsinki mock events, dedup by id
-  const allEvents = useMemo(() => {
-    const dbIds = new Set((dbEvents || []).map(e => e.id));
-    const helsinkiMocks = mockEvents.filter(e => e.city === CITY && !dbIds.has(e.id));
-    return [...(dbEvents || []), ...helsinkiMocks];
-  }, [dbEvents]);
+  const allEvents = useMemo(() => dbEvents || [], [dbEvents]);
 
   // "Tonight" = events happening today
   const tonightEvents = useMemo(() => {

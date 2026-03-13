@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { mockEvents } from "@/data/mockEvents";
+// Real events from Supabase
 import { ArrowLeft, MapPin, Clock, Music, User, Users, Share2, TrendingUp, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -20,8 +20,7 @@ const EventDetail = () => {
   const purchaseTicket = usePurchaseTicket();
   const [shareOpen, setShareOpen] = useState(false);
 
-  // Try DB events first, then mock
-  const event = dbEvents.find((e) => e.id === id) || mockEvents.find((e) => e.id === id);
+  const event = dbEvents.find((e) => e.id === id);
 
   useShareMeta(event);
 
